@@ -6,12 +6,12 @@ services:
       dockerfile: ./docker/php/Dockerfile
     volumes:
       - type: volume
-        sorce: php-fpm-socket
+        source: php-fpm-socket
         target: /var/run/php-fpm
         volume:
           nocopy: true
       - type: bind
-        sorce: ./app
+        source: ./app
         target: /work/app
     environment:
       - DB_CONNECTION=mysql
@@ -37,11 +37,12 @@ services:
         volume:
           nocopy: true
       - type: bind
-        sorce: ./app
+        source: ./app
         target: /work/app
 
   db:
     image: mysql:8.0
+    platform: linux/x86_64
     ports:
       - target: 3306
         published: ${DB_PORT}
