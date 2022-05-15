@@ -42,10 +42,23 @@ services:
 
   db:
     image: mysql:8.0
+    ports:
+      - target: 3306
+        published: ${DB_PORT}
+        protocol: tcp
+        mode: host
     volumes:
-      - db-volume:/var/lib/mysql
-    
-    
+      - type: volume
+        source: db-volume
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+
 volumes:
   php-fpm-socket:
-  dbvolume:
+  db-volume:
