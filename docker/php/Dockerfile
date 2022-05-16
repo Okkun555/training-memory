@@ -19,3 +19,5 @@ RUN apt-get update && \
     docker-php-ext-install intl pdo_mysql zip bcmath && \
     composer config -g process-timeout 3600 && \
     composer config -g repos.packagist composer https://packagist.org
+
+WORKDIR /work/app
