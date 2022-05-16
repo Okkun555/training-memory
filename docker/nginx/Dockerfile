@@ -9,4 +9,4 @@ COPY --from=node /usr/local/bin /usr/local/bin
 COPY --from=node /opt /opt
 COPY ./docker/nginx/*.conf /etc/nginx/conf.d/
 
-WORKDIR /work/app   apk add --update --no-cache ==virtual=.build-dependencies g++
+WORKDIR /work/src   apk add --update --no-cache ==virtual=.build-dependencies g++
