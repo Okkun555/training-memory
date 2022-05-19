@@ -5,9 +5,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
     COMPOSER_HOME=/composer
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
-COPY ./docker/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-ftpm.d/zzz-www.conf
+COPY ./docker/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
-
 
 RUN apt-get update && \
     apt-get -y install git libicu-dev libonig-dev libzip-dev unzip locales && \
