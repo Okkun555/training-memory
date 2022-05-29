@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: composer install
         run: composer install -n --prefer-dist
-        working_dir: src
+        working-directory: src
       - name: composer dump autoload
         run: composer dump-autoload
       - name: generate key
