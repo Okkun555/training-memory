@@ -31,10 +31,11 @@ jobs:
       DB_PASSWORD: password
 
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
       - name: composer install
-        run: composer install -n --prefer-dist
         working-directory: src
+        run: composer install -n --prefer-dist
       - name: composer dump autoload
         run: composer dump-autoload
       - name: generate key
