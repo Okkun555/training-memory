@@ -26,22 +26,14 @@ jobs:
       DB_CONNECTION: mysql
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
-      DB_DATABASE: testdatabase
+      DB_DATABASE: test_db
       DB_USERNAME: root
       DB_PASSWORD: password
 
     steps:
       - uses: actions/checkout@v2
-      - name: cache vendor
-        id: cache
-        uses: actions/cache@v1
-        with:
-          path: ./vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
       - name: composer install
-        if: steps.cache.outputs.cache-hit != 'true'
+        run: cd /home/runner/work/training-memory/training-memory/src
         run: composer install -n --prefer-dist
       - name: composer dump autoload
         run: composer dump-autoload
