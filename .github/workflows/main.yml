@@ -32,10 +32,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: move to target directory
-        run: cd /home/runner/work/training-memory/training-memory/src
       - name: composer install
         run: composer install -n --prefer-dist
+        working_dir: src
       - name: composer dump autoload
         run: composer dump-autoload
       - name: generate key
